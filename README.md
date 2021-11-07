@@ -14,4 +14,4 @@ Za posamezne epizode bom zajel naslednje podatke:
 Analiziral bom naslednje hipoteze:
 * Najbolj pogosti gostje,
 * Kako se spreminja dolžina epizod skozi obstoj podcasta,
-* Katere besede/tematike se najpogostoje pojavljajo v opisih.
+* Katere besede/tematike se najpogosteje pojavljajo v opisih.
