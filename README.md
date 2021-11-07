@@ -6,6 +6,7 @@ Podatki o epizodah: (https://audioboom.com/channels/4954758.rss)
 
 Za posamezne epizode bom zajel naslednje podatke:
 * Naslov ter številka epizode,
+* Spletna povezava do epizode,
 * Datum objavitve,
 * Dolžina epizode,
 * Gost na epizodi.
