@@ -5,11 +5,11 @@ DTFH: (http://www.duncantrussell.com/episodes)
 Podatki o epizodah: (https://audioboom.com/channels/4954758.rss)
 
 Za posamezne epizode bom zajel naslednje podatke:
-* Naslov ter številka epizode,
+* Naslov epizode,
 * Spletna povezava do epizode,
 * Datum objavitve,
 * Dolžina epizode,
-* Gost na epizodi.
+* Eksplicitnost epizode,
 * Opis.
 
 Analiziral bom naslednje hipoteze:

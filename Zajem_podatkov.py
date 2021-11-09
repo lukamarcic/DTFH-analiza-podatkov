@@ -1,53 +1,28 @@
 import csv
 import json
-import requests
 import re
+import bs4
+import pandas
+import requests
+from bs4 import BeautifulSoup
 
+stran = requests.get('https://audioboom.com/channels/4954758.rss')
 
-vzorec_epizode = re.compile(
-    r'<item>.*'
+soup = BeautifulSoup(stran.text, 'html.parser')
 
-)
+ime_datoteke = "DTFH.csv"
+datoteka = csv.writer(open(ime_datoteke, 'w', newline='', encoding='utf-8'))
+datoteka.writerow(['Naslov', 'Spletna povezava', 'Dolžina', 'Datum', 'Eksplicitnost', 'Opis'])
 
-vzorec_naslova = re.compile(
-    a
-)
+epizode = soup.select("item")
 
-vzorec_spletnega_naslova = re.compile(
+for epizoda in epizode:
 
-)
+    naslov = (str(epizoda.find("title")))[7:-8]
+    spletna_povezava = (str((re.findall(r'link/>.*', str(epizoda)))[0]))[6:]
+    dolzina = (str(epizoda.find("itunes:duration")))[17: -18]
+    datum = (str(epizoda.select_one("pubDate")))[9:-10]
+    eksplicitnost = (str(epizoda.find("itunes:explicit")))[17:-18]
+    opis = ((str(epizoda.find("description")))[13:-14]).replace("\n", " ")
 
-vzorec_datuma = re.compile(
-
-)
-
-vzorec_dolzine = re.compile(
-
-)
-
-vzorec_gosta = re.compile(
-
-)
-
-vzorec_opisa = re.compile(
-
-)
-
-
-def izloci_podatke_podcasta(tekst):
-    return None
-
-
-epizode = []
-
-with open("DTFH.csv", "w") as dat:
-    writer = csv.DictWriter(dat, [
-        "naslov",
-        "spletni naslov",
-        "datum",
-        "dolzina",
-        "gost",
-        "opis",
-    ])
-    writer.writeheader()
-    writer.writerows(epizode)
+    datoteka.writerow([naslov, spletna_povezava, dolzina, datum, eksplicitnost, opis])
