@@ -10,10 +10,9 @@ soup = BeautifulSoup(stran.text, 'html.parser')
 
 ime_datoteke = "DTFH.csv"
 datoteka = csv.writer(open(ime_datoteke, 'w', newline='', encoding='utf-8'))
-datoteka.writerow(['Naslov', 'Spletna povezava', 'Dolžina', 'Datum', 'Eksplicitnost', 'Opis'])
+datoteka.writerow(['Naslov', 'Spletna povezava', 'Dolžina', 'Datum', 'Eksplicitnost' 'Opis'])
 
 epizode = soup.select("item")
-
 for epizoda in epizode:
 
     naslov = (str(epizoda.find("title")))[7:-8]
