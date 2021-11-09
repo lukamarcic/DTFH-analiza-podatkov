@@ -1,13 +1,13 @@
 # DTFH analiza podatkov
 
-Analiziral bom epizode podcasta z naslovom "The Duncan Trussel family hour" oziroma "DTFH" skrajšano.
-DTFH: (http://www.duncantrussell.com/episodes)
-Podatki o epizodah: (https://audioboom.com/channels/4954758.rss)
+Analiziral bom epizode podcasta z naslovom "The Duncan Trussel family hour" oziroma "DTFH" skrajšano.  
+DTFH: (http://www.duncantrussell.com/episodes)  
+Podatki o epizodah: (https://audioboom.com/channels/4954758.rss)  
 
 Za posamezne epizode bom zajel naslednje podatke:
 * Naslov epizode,
 * Spletna povezava do epizode,
-* Datum objavitve,
+* Datum objave,
 * Dolžina epizode,
 * Eksplicitnost epizode,
 * Opis.
