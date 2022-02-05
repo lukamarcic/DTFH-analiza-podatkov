@@ -23,6 +23,19 @@ def remove_all(tekst, sez):
 seznam_ods_stvari_opis =    ('\r', '\n', '<![CDATA[', '<strong>', '</strong>', '<br>', '<div>', '</div>', '<a>', '</a>',
                                 '<ul>', '</ul>', '<li>', '</li>', '<em>', '</em>', '<a href=', '>', ']]>', )
 
+#Dodatna funkcija za odstranitev indeksov epizod, ki jih je avtor začel vključevati v naslov na neki točki (napačni so)
+
+def lstrip_multiple(n, tekst, sez):
+    i = 0
+    for i in range(n):
+        for item in sez:
+            tekst = tekst.lstrip(item)
+        i += 1
+    return tekst.lstrip()
+
+seznam_ods_znakov_naslov =  ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ' ')
+
+
 #Za vsako epizodo izluščimo podatke (podatki so pretvorjeni v string, odstranjeni so začetki in konci,saj so tam bile html oznake)
 #Edina izjema je spletna povezava, saj beautiful soup zaradi nekega razloga spremeni format in ga potem ne najde
 #Pri opisih epizod so dodatno odstranjene html oznake ter nekateri nevidni znaki, saj so povzročali težave
@@ -30,7 +43,9 @@ seznam_ods_stvari_opis =    ('\r', '\n', '<![CDATA[', '<strong>', '</strong>', '
 #seznam naslovov
 naslovi = []
 for epizoda in epizode:
-    naslovi.append ((str(epizoda.find("title")))[7:-8])
+    naslov1 = ((str(epizoda.find("title")))[7:-8])
+    naslov = lstrip_multiple(5, naslov1, seznam_ods_znakov_naslov)
+    naslovi.append(naslov)
 
 #seznam spletnih povezav
 spletne_povezave = []
@@ -60,7 +75,7 @@ for epizoda in epizode:
     opisi.append(opis)
 
 #Sedaj s Pandas naredimo csv datoteko
-slovar =    {'Naslov' : naslovi, 'Spletna povezava' : spletne_povezave, 'Dolžina' : dolzine,
-            'Datum objave' : datumi, 'Eksplicitnost' : eksplicitnosti, 'Opis' : opisi}
+slovar =    {'naslov' : naslovi, 'povezava' : spletne_povezave, 'dolzina' : dolzine,
+            'datum' : datumi, 'eksplicitnost' : eksplicitnosti, 'opis' : opisi}
 df = pd.DataFrame(slovar)
-df.to_csv('DTFH.csv')
+df.to_csv('DTFH.csv', index=False)
