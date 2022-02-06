@@ -14,7 +14,8 @@ soup = BeautifulSoup(stran.text, 'html.parser')
 epizode = soup.select("item")
 
 
-#Dodatna funkcija za odstranitev določenih stvari iz besedila opisa ter seznam stvari, ki jih bomo odstranili (večinmao html oznake)
+#Dodatna funkcija za odstranitev določenih stvari iz besedila opisa ter seznam stvari,
+# ki jih bomo odstranili (večinmao html oznake)
 def remove_all(tekst, sez):
     for item in sez:
         tekst = tekst.replace(item, "")
